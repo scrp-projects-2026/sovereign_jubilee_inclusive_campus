@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071321">
+
+<title>Jubilee Inclusive Campus | Sovereign Command</title>
+
+<style>
+:root {
+    --navy: #071321;
+    --navy2: #10243a;
+    --gold: #e8bd62;
+    --teal: #45d5c2;
+    --white: #f5f8fc;
+    --muted: #9eafc2;
+    --panel: rgba(19, 39, 59, 0.88);
+    --border: rgba(232, 189, 98, 0.22);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--white);
+    font-family: "Segoe UI", Arial, sans-serif;
+    background:
+        radial-gradient(circle at 85% 10%, #173b4d 0, transparent 35%),
+        radial-gradient(circle at 10% 90%, #102d3d 0, transparent 30%),
+        var(--navy);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button, a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.shell {
+    max-width: 1450px;
+    margin: auto;
+    padding: 28px;
+}
+
+/* Header */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--border);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.emblem {
+    width: 58px;
+    height: 58px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--gold);
+    border-radius: 16px;
+    color: var(--gold);
+    font-size: 27px;
+    background: linear-gradient(145deg, #172e45, #081521);
+    box-shadow: 0 0 25px rgba(232, 189, 98, 0.08);
+}
+
+.brand h1 {
+    margin: 0;
+    font-size: clamp(18px, 2vw, 27px);
+    letter-spacing: 1.5px;
+    font-weight: 700;
+}
+
+.brand p {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.status {
+    border: 1px solid rgba(69, 213, 194, 0.3);
+    background: rgba(69, 213, 194, 0.08);
+    color: var(--teal);
+    padding: 10px 15px;
+    border-radius: 30px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+/* Hero */
+
+.hero {
+    padding: 65px 0 45px;
+    max-width: 950px;
+}
+
+.eyebrow {
+    color: var(--gold);
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 700;
+}
+
+.hero h2 {
+    margin: 17px 0;
+    font-size: clamp(34px, 5vw, 62px);
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+}
+
+.hero h2 span {
+    color: var(--gold);
+}
+
+.hero p {
+    max-width: 760px;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+/* Overview strip */
+
+.overview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 42px;
+}
+
+.metric {
+    padding: 22px;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    background: rgba(12, 29, 45, 0.72);
+}
+
+.metric small {
+    display: block;
+    color: var(--muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.metric strong {
+    display: block;
+    margin-top: 12px;
+    color: var(--gold);
+    font-size: 25px;
+}
+
+/* Document section */
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.section-heading h3 {
+    margin: 0;
+    font-size: 25px;
+}
+
+.section-heading p {
+    margin: 7px 0 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.documents {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 270px;
+    padding: 27px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: var(--panel);
+    transition: transform .25s ease, border-color .25s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+}
+
+.card-icon {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: rgba(232, 189, 98, 0.1);
+    color: var(--gold);
+    font-size: 23px;
+}
+
+.card h4 {
+    margin: 23px 0 10px;
+    font-size: 19px;
+}
+
+.card p {
+    margin: 0 0 25px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.action {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 13px 16px;
+    border-radius: 9px;
+    background: var(--gold);
+    color: #091521;
+    font-size: 13px;
+    font-weight: 700;
+    transition: background .2s ease;
+}
+
+.action:hover {
+    background: #f4d58e;
+}
+
+.action.secondary {
+    color: var(--teal);
+    background: rgba(69, 213, 194, 0.09);
+    border: 1px solid rgba(69, 213, 194, 0.25);
+}
+
+/* Notice */
+
+.notice {
+    margin-top: 35px;
+    padding: 22px 25px;
+    border-left: 3px solid var(--teal);
+    border-radius: 8px;
+    background: rgba(69, 213, 194, 0.055);
+}
+
+.notice strong {
+    color: var(--teal);
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.notice p {
+    margin: 9px 0 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* Footer */
+
+footer {
+    margin-top: 55px;
+    padding: 25px 0;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+footer span:first-child {
+    color: var(--gold);
+    letter-spacing: 1.5px;
+}
+
+@media (max-width: 850px) {
+    .documents {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .overview {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .shell {
+        padding: 18px;
+    }
+
+    header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .hero {
+        padding: 45px 0 30px;
+    }
+
+    .documents,
+    .overview {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="shell">
+
+    <header>
+        <div class="brand">
+            <div class="emblem" aria-hidden="true">✦</div>
+
+            <div>
+                <h1>JUBILEE INCLUSIVE CAMPUS</h1>
+                <p>Sovereign Command Center</p>
+            </div>
+        </div>
+
+        <div class="status">
+            ● DOCUMENT ACCESS PORTAL
+        </div>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <div class="eyebrow">
+                Sovereign Bio-Solar-Thermal Campus
+            </div>
+
+            <h2>
+                A Future Built on<br>
+                <span>Inclusion & Sovereignty.</span>
+            </h2>
+
+            <p>
+                A unified digital gateway for the Jubilee Inclusive Campus
+                initiative—connecting inclusive infrastructure, community
+                participation, sustainable systems and the Sovereign
+                development vision.
+            </p>
+        </section>
+
+        <section class="overview" aria-label="Campus overview">
+
+            <div class="metric">
+                <small>Proposed Campus Site</small>
+                <strong>20,000 m²</strong>
+            </div>
+
+            <div class="metric">
+                <small>Development Vision</small>
+                <strong>Inclusive</strong>
+            </div>
+
+            <div class="metric">
+                <small>Project Location</small>
+                <strong>eMbalenhle, Mpumalanga</strong>
+            </div>
+
+        </section>
+
+        <section>
+
+            <div class="section-heading">
+                <div>
+                    <h3>Sovereign Document Room</h3>
+                    <p>
+                        Access the Jubilee MOU and its associated materials.
+                    </p>
+                </div>
+            </div>
+
+            <div class="documents">
+
+                <!-- Interactive HTML MOU -->
+
+                <article class="card">
+                    <div class="card-icon" aria-hidden="true">◇</div>
+
+                    <h4>Interactive MOU</h4>
+
+                    <p>
+                        Open the original web-based Memorandum of
+                        Understanding. The HTML document remains
+                        interactive and is not converted to PDF.
+                    </p>
+
+                    <a class="action"
+                       href="mou_sovereign_jubilee.html">
+                        Open Interactive MOU ↗
+                    </a>
+                </article>
+
+                <!-- PDF MOU -->
+
+                <article class="card">
+                    <div class="card-icon" aria-hidden="true">▤</div>
+
+                    <h4>Official PDF Copy</h4>
+
+                    <p>
+                        Open the PDF version of the Jubilee Sovereign
+                        Memorandum of Understanding in your browser.
+                    </p>
+
+                    <a class="action"
+                       href="mou_sovereign_jubilee.pdf"
+                       target="_blank"
+                       rel="noopener">
+                        View PDF ↗
+                    </a>
+                </article>
+
+                <!-- Supporting assets -->
+
+                <article class="card">
+                    <div class="card-icon" aria-hidden="true">▧</div>
+
+                    <h4>Supporting MOU Assets</h4>
+
+                    <p>
+                        The supporting files folder contains resources
+                        associated with the interactive MOU, such as
+                        images, stylesheets and other linked materials.
+                    </p>
+
+                    <a class="action secondary"
+                       href="mou_sovereign_jubilee.html">
+                        Open MOU with Its Assets ↗
+                    </a>
+                </article>
+
+            </div>
+
+        </section>
+
+        <section class="notice">
+            <strong>DOCUMENT INTEGRITY & ACCESS</strong>
+
+            <p>
+                The interactive MOU and its supporting folder should remain
+                together in the repository using their original names.
+                This preserves relative links and allows the HTML document
+                to load its associated resources. The dashboard provides
+                access to the documents; it does not alter the contents
+                or legal status of the MOU.
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <span>JUBILEE • SOVEREIGN • INCLUSIVE</span>
+
+        <span>
+            Prestige Sovereign Command Dashboard
+        </span>
+    </footer>
+
+</div>
+
+</body>
+</html>
